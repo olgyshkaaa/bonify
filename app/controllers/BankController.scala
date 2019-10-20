@@ -18,7 +18,7 @@ class BankController @Inject()(
                               ) extends AbstractController(cc) {
 
 
-  val filepath = "C:\\Users\\Airat\\Desktop\\tempFile"
+  val filepath = new java.io.File(".").getCanonicalPath + "\\app\\resources"
 
   private def uploadFile(fileName: String): Unit = {
 
@@ -34,6 +34,7 @@ class BankController @Inject()(
   def upload: Action[MultipartFormData[Files.TemporaryFile]] = Action(parse.multipartFormData) { request =>
     println("test")
     request.body.file("fileupload").map { file =>
+      println(filepath)
       val filename = file.filename
       val contentType = file.contentType
       println(contentType)
