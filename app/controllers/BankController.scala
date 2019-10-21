@@ -18,11 +18,12 @@ class BankController @Inject()(
                               ) extends AbstractController(cc) {
 
 
-  val filepath = new java.io.File(".").getCanonicalPath + "\\app\\resources"
 
-  private def uploadFile(fileName: String): Unit = {
+  val filepath: String = new java.io.File(".").getCanonicalPath + "\\resources"
 
-    val bufferedSource = scala.io.Source.fromFile(s"$filepath\\$fileName")
+  private def uploadFile(filename: String): Unit = {
+
+    val bufferedSource = scala.io.Source.fromFile(s"$filepath\\$filename")
     for (line <- bufferedSource.getLines.drop(1)) {
       val cols = line.split(",").map(_.trim)
       bankRepository.add(Bank(id = cols(1), name = cols(0)))
@@ -32,12 +33,8 @@ class BankController @Inject()(
 
 
   def upload: Action[MultipartFormData[Files.TemporaryFile]] = Action(parse.multipartFormData) { request =>
-    println("test")
     request.body.file("fileupload").map { file =>
-      println(filepath)
       val filename = file.filename
-      val contentType = file.contentType
-      println(contentType)
 
       file.ref.moveTo(new File(s"$filepath\\$filename"), replace = true)
       uploadFile(filename)
