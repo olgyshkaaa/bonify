@@ -32,6 +32,7 @@ user: "postgres"
 password: ""
 
 3. Create resource folder inside the application folder
+
 4.```sbt clean ```
 5.  ```sbt compile ```
 6.  ```sbt run ```
