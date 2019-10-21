@@ -3,7 +3,7 @@ backend challenge
 
 1.Create database:
 
-```
+```sql
 CREATE DATABASE banks
     WITH 
     OWNER = postgres
@@ -32,6 +32,7 @@ user: "postgres"
 password: ""
 
 3.  ```sbt clean ```
-4. sbt compile
-5. sbt run
-6. URL: http://localhost:9000/bank 
+4.  ```sbt compile ```
+5.  ```sbt run ```
+6. URL: http://localhost:9000/bank [POST, GET]
+   Key for POST request: "fileupload" 
