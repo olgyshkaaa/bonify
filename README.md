@@ -1,7 +1,7 @@
 # bonify
 backend challenge
 
-1.Create database:
+1.Create PostgreSQL database:
 
 ```sql
 CREATE DATABASE banks
