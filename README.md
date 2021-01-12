@@ -1,4 +1,4 @@
-# bonify
+
 backend challenge
 
 1.Create PostgreSQL database:
